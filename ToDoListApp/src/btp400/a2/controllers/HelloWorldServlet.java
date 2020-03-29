@@ -1,4 +1,4 @@
-package btp400.a2;
+package btp400.a2.controllers;
 
 import java.io.IOException;
 import javax.servlet.ServletException;

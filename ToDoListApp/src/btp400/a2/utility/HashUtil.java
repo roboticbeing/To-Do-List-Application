@@ -1,4 +1,4 @@
-package btp400.a2;
+package btp400.a2.utility;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -22,6 +22,7 @@ public class HashUtil {
      
     // Creates a 32-byte random salt String.
     public static String getSalt() {
+    	//more secure than Random.util
         Random r = new SecureRandom();
         byte[] saltBytes = new byte[32];
         r.nextBytes(saltBytes);
