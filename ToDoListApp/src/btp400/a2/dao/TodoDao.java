@@ -16,7 +16,7 @@ public class TodoDao {
 	    private static final String SELECT_TASK_BY_ID = "select id,title,username,description, status from task where id =?";
 	    private static final String SELECT_ALL_TASKS = "select * from task";
 	    private static final String DELETE_TASK_BY_ID = "delete from task where id = ?;";
-	    private static final String UPDATE_TASK = "update todos set title = ?, username= ?, description =?, status = ? where id = ?;";
+	    private static final String UPDATE_TASK = "update task set title = ?, username= ?, description =?, status = ? where id = ?;";
 
 
 	    public void insertTodo(Task task) throws SQLException {
