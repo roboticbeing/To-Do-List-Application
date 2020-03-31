@@ -109,7 +109,7 @@ button:hover {
 		<nav class="navbar navbar-expand-md navbar-dark"
 			style="background-color: black">
 			<div>
-				<a href="/ToDoList/todo" class="navbar-brand"> ToDo</a>
+				<a href="/ToDoList/" class="navbar-brand"> ToDo</a>
 			</div>
 
 			<ul class="navbar-nav">
