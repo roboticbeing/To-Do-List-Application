@@ -4,32 +4,39 @@
 <head>
 <title>User Management Application</title>
 
-<link rel="stylesheet"
- href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
- integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
- crossorigin="anonymous">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
 </head>
 
 </head>
 <body>
- <header>
-  <nav class="navbar navbar-expand-md navbar-dark" style="background-color: black">
-   <div>
-    <a href="/ToDoList/todo" class="navbar-brand"> Todo App</a>
-   </div>
+<header>
+		<nav class="navbar navbar-expand-md navbar-dark"
+			style="background-color: black">
+			<div>
+				<a href="/ToDoList/todo" class="navbar-brand"> ToDo</a>
+			</div>
 
-   <ul class="navbar-nav">
-    <li><a href="<%=request.getContextPath()%>/list"
-     class="nav-link">Todos</a></li>
-   </ul>
-
-   <ul class="navbar-nav navbar-collapse justify-content-end">
-    <li><a href="<%=request.getContextPath()%>/LogoutServlet"
-     class="nav-link">Logout</a></li>
-   </ul>
-  </nav>
- </header>
+			<ul class="navbar-nav">
+				<li><a href="<%=request.getContextPath()%>/list"
+					class="nav-link">List</a></li>
+			</ul>
+			<c:choose>
+				<c:when test="${sessionScope.loggedUser != null}">
+					<ul class="navbar-nav navbar-collapse justify-content-end">
+						<li><a href="LogoutServlet" class="nav-link">Logout</a></li>
+					</ul>
+				</c:when>
+				<c:otherwise>
+					<ul class="navbar-nav navbar-collapse justify-content-end">
+						<li><a href="loginForm.jsp" class="nav-link">Login</a></li>
+						<li><a href="registerForm.jsp" class="nav-link">Sign Up</a></li>	
+					</ul>
+				</c:otherwise>
+			</c:choose>
+		</nav>
+	</header>
  <div class="container col-md-5">
   <div class="card">
    <div class="card-body">
