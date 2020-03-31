@@ -10,6 +10,7 @@
 <h1>My first JSP Page</h1>
 <p>I'm ready to learn Enterprise Java!</p>
 
-<p><a href="HelloWorldServlet">Test my Hello World Servlet!</a></p>
+<p><a href="LogoutServlet">Logout!</a></p>
+<
 </body>
 </html>
