@@ -65,21 +65,16 @@
     </head>
 	<body>
     	<div class="container">
-        	<h2>Create User ID</h2>
+        	<h2>Create an Account</h2>
            
         	<form action="<%=request.getContextPath()%>/register" method="post">
 
             	<div class="form-group">
-                	<label for="uname">User Name</label> <input type="text" class="form-control" id="uname" placeholder="User Name" name="userName" required>
+                	<label for="uname">User Name</label> <input type="text" class="form-control" id="username" placeholder="User Name" name="username" required>
             	</div>
 
             	<div class="form-group">
                 	<label for="uname">Password</label> <input type="password" class="form-control" id="password" placeholder="Password" name="password" required>
-            	</div>
-            	
-            	<!-- This should be hidden -->
-            	<div class="form-group">
-                	<label for="salt">Salt</label> <input type="text" class="form-control" id="salt" placeholder="Salt" name="salt" required>
             	</div>
 
             	<button type="submit">Submit</button>

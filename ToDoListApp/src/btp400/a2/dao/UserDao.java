@@ -2,6 +2,7 @@ package btp400.a2.dao;
 
 import btp400.a2.models.User;
 import btp400.a2.utility.ConnectionManager;
+import btp400.a2.utility.HashUtil;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -22,12 +23,10 @@ public class UserDao {
 	
 	 public int registerUser(User user) throws ClassNotFoundException {
 	        String INSERT_USERS_SQL = "INSERT INTO user" +
-	            "  (user_id, username, password, salt) VALUES " +
-	            " (?, ?, ?, ?);";
+	            "  (username, password, salt) VALUES " +
+	            " (?, ?, ?);";
 
 	        int result = 0;
-	        int count = 2;
-	        count += 1;
 	        
 	        Class.forName("com.mysql.jdbc.Driver");
 
@@ -36,10 +35,9 @@ public class UserDao {
 	        	
 	            // Step 2:Create a statement using connection object
 	            PreparedStatement preparedStatement = connection.prepareStatement(INSERT_USERS_SQL)) {
-	            preparedStatement.setInt(1, count);
-	            preparedStatement.setString(2, user.getUsername());
-	            preparedStatement.setString(3, user.getPassword());
-	            preparedStatement.setString(4, user.getSalt());
+	            preparedStatement.setString(1, user.getUsername());
+	            preparedStatement.setString(2, user.getPassword());
+	            preparedStatement.setString(3, user.getSalt());
 
 	            System.out.println(preparedStatement);
 	            // Step 3: Execute the query or update query
@@ -60,10 +58,7 @@ public class UserDao {
 		 String password = user.getPassword();
 		 
 		 String SEARCH_USERS_SQL = "SELECT * FROM user WHERE username='" 
-		 + username 
-		 + "' AND password='"
-		 + password
-		 + "'";
+		 + username + "'";
 		 
 		 try 
 	      {
@@ -71,24 +66,22 @@ public class UserDao {
          currentCon = ConnectionManager.getConnection();
          stmt=currentCon.createStatement();
          rs = stmt.executeQuery(SEARCH_USERS_SQL);	        
-         boolean more = rs.next();
 	       
-         // if user does not exist set the isValid variable to false
-         if (!more) 
-         {
-            System.out.println("Sorry, you are not a registered user! Please sign up first");
-            System.out.println(username + password);
-            user.setValid(false);
-         } 
-	        
-         //if user exists set the isValid variable to true
-         else if (more) 
-         {
-	     	
-            System.out.println("Welcome " + username);
-            user.setValid(true);
+         if (rs.first()) {
+        	    String salt = rs.getString("salt");
+        	    String pwHash = HashUtil.getPasswordHash(password, salt);
+        	 
+        	    if (rs.getString("password").equalsIgnoreCase(pwHash)) {
+        	    	System.out.println("Welcome " + username);
+                    user.setValid(true);
+        	    } 
+        	    
+        	    else {
+        	    	System.out.println("Sorry, you are not a registered user! Please sign up first");
+                    user.setValid(false);
+        	    }
          }
-      } 
+  }
 
       catch (Exception ex) 
       {

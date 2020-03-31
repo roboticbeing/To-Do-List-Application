@@ -1,6 +1,7 @@
 package btp400.a2.controllers;
 
 import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 //import java.util.ArrayList;
 
@@ -13,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import btp400.a2.dao.UserDao;
 import btp400.a2.models.User;
+import btp400.a2.utility.HashUtil;
 
 //import btp400.a2.models.HashUtil;
 
@@ -39,44 +41,7 @@ public class RegisterServlet extends HttpServlet {
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("registerForm.jsp"); 
 		dispatcher.forward(request, response);
-		//response.getWriter().append("Served at: ").append(request.getContextPath());
-		
-//		String username = request.getParameter("username");
-//		String password = request.getParameter("password");
-		// todo: you probably want to ask them to confirm their password, and
-		// you should also validate the password to make sure it's a "strong"
-		// password
-		             
-//		UserDao dao = new UserDao();
-		
-//		ArrayList<User> user;
-//		try {
-//			user = dao.runQuery();
-//			System.out.println(user);
-//		} catch (SQLException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-		
-		
-		 
-//		// make sure this customer isn't already in the database
-//		if (dao.findCustomer(email)) {
-//		    // customer is already in there - error
-//		} else {
-//		    // create the salt and password hash
-//		    String salt = HashUtil.getSalt();
-//		    String passwordHash = HashUtil.getPasswordHash(password, salt);
-//		                 
-//		    // add the customer to the Customer table
-//		    Customer cust = new Customer(firstName, lastName, email, etc...);
-//		    int result = dao.addCustomer(cust, passwordHash, salt);
-//		    if (result > 0) {
-//		        // success
-//		    } else {
-//		        // failure
-//		    }
-//		}
+
 	}
 
 	/**
@@ -85,13 +50,21 @@ public class RegisterServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
-		String salt = request.getParameter("salt");
 		
 		User user = new User();
 		
 		user.setUsername(username);
-		user.setPassword(password);
+		
+		// create the salt and password hash
+	    String salt = HashUtil.getSalt();
 		user.setSalt(salt);
+		String passwordHash;
+		try {
+			passwordHash = HashUtil.getPasswordHash(password, salt);
+			user.setPassword(passwordHash);
+		} catch (NoSuchAlgorithmException e1) {
+			e1.printStackTrace();
+		}
 		
 		try {
 			userDao.registerUser(user);
@@ -100,12 +73,9 @@ public class RegisterServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-		//redirect to success page/home page
-		//response.sendRedirect("testJsp.jsp");
-		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("testJsp.jsp"); 
+		RequestDispatcher dispatcher = request.getRequestDispatcher("loginForm.jsp"); 
 		dispatcher.forward(request, response);
-		//doGet(request, response);
+
 	}
 
 }
