@@ -86,8 +86,6 @@ h1 {
 </c:choose>
 </ul>
 
-<p><a href="LogoutServlet">Logout!</a></p>
-
 <p class="footer">Created by Jessica Krishtul, Jeasung Chun (2020)</p>
 
 </div>
