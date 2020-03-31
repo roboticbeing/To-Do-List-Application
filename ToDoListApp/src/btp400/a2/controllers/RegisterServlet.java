@@ -18,16 +18,17 @@ import btp400.a2.models.User;
 
 /**
  * Servlet implementation class RegisterUser
+ * @author Jessica Krishtul
  */
 @WebServlet("/register")
-public class RegisterUser extends HttpServlet {
+public class RegisterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private UserDao userDao = new UserDao();
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public RegisterUser() {
+    public RegisterServlet() {
         super();
     }
 
