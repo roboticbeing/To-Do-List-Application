@@ -17,7 +17,7 @@ import btp400.a2.models.Task;
 /**
  * Servlet implementation class Todo
  */
-@WebServlet("/todo")
+@WebServlet("/")
 public class Todo extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     private TodoDao todoDAO = new TodoDao();
