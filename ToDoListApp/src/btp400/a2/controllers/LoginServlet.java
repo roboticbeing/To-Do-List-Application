@@ -1,6 +1,7 @@
 package btp400.a2.controllers;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -52,13 +53,18 @@ public class LoginServlet extends HttpServlet {
 		     {
 			        
 		          HttpSession session = request.getSession(true);	    
-		          session.setAttribute("currentSessionUser",user); 
-		          response.sendRedirect("testJsp.jsp"); //logged-in page      		
+		          session.setAttribute("loggedUser",user); 
+		          response.sendRedirect("index.jsp"); //logged-in page      		
 		     }
 			        
 		     else 
-		          //response.sendRedirect("invalidLogin.jsp"); //error page 
-		    	 response.getWriter().append("<h1>Error!</h1>");
+		     response.setContentType("text/html");
+		     PrintWriter pw=response.getWriter();
+		     pw.println("<script type=\"text/javascript\">");
+		     pw.println("alert('Invalid Username or Password');");
+		     pw.println("</script>");
+		     RequestDispatcher rd=request.getRequestDispatcher("loginForm.jsp");
+		     rd.include(request, response);
 		} 
 				
 				

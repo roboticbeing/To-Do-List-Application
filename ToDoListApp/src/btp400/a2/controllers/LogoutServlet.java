@@ -33,7 +33,7 @@ public class LogoutServlet extends HttpServlet {
 		session.removeAttribute("messages");
 		session.removeAttribute("error");
 		session.invalidate();
-		response.sendRedirect("loginForm.jsp");
+		response.sendRedirect("index.jsp");
 		System.out.println("Logged out!");
 	}
 
