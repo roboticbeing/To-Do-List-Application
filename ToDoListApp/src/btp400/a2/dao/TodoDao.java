@@ -1,3 +1,6 @@
+/**
+ *  @author: Jeasung Chun 
+ */
 package btp400.a2.dao;
 
 import java.sql.Connection;
@@ -80,6 +83,7 @@ public class TodoDao {
 	            }
 	        } catch (SQLException exception) {
 	        	JDBCTemplate.printSQLException(exception);
+	        	System.out.println("Error");
 	        }
 	        return tasks;
 	    }
