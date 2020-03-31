@@ -1,3 +1,6 @@
+/**
+ *  @author: Jeasung Chun 
+ */
 package btp400.a2.controllers;
 
 import java.io.IOException;
@@ -14,9 +17,6 @@ import javax.servlet.http.HttpServletResponse;
 import btp400.a2.dao.TodoDao;
 import btp400.a2.models.Task;
 
-/**
- * Servlet implementation class Todo
- */
 @WebServlet("/")
 public class Todo extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -79,9 +79,9 @@ public class Todo extends HttpServlet {
     private void showEditForm(HttpServletRequest request, HttpServletResponse response)
     throws SQLException, ServletException, IOException {
         long id = Integer.parseInt(request.getParameter("id"));
-        Task existingTodo = todoDAO.selectTodo(id);
+        Task existingTask = todoDAO.selectTodo(id);
         RequestDispatcher dispatcher = request.getRequestDispatcher("todoForm.jsp");
-        request.setAttribute("todo", existingTodo);
+        request.setAttribute("task", existingTask);
         dispatcher.forward(request, response);
 
     }
@@ -94,8 +94,8 @@ public class Todo extends HttpServlet {
 
 
         boolean status = Boolean.valueOf(request.getParameter("status"));
-        Task newTodo = new Task(title, username, description, status);
-        todoDAO.insertTodo(newTodo);
+        Task newTask = new Task(title, username, description, status);
+        todoDAO.insertTodo(newTask);
         response.sendRedirect("list");
     }
 
@@ -107,9 +107,9 @@ public class Todo extends HttpServlet {
         String description = request.getParameter("description");
 
         boolean status = Boolean.valueOf(request.getParameter("status"));
-        Task updateTodo = new Task(id, title, username, description, status);
+        Task updateTask = new Task(id, title, username, description, status);
 
-        todoDAO.updateTodo(updateTodo);
+        todoDAO.updateTodo(updateTask);
 
         response.sendRedirect("list");
     }
