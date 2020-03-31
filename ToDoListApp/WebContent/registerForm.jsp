@@ -31,9 +31,6 @@
          li:last-child {
          border-right: none;
          }
-         .logout {
-         visibility: hidden;
-         }
          .active {
          background-color: rgb(34, 120, 177);
          }
