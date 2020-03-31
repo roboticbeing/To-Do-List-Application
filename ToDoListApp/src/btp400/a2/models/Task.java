@@ -1,6 +1,5 @@
 package btp400.a2.models;
 
-import java.time.LocalDate;
 
 
 public class Task {
@@ -8,7 +7,6 @@ public class Task {
 	private String title;
 	private String username;
 	private String description;
-	private LocalDate targetDate;
 	private boolean status;
 	
 
