@@ -1,5 +1,8 @@
-Must have MySQL and Java Enterprise to run
+## Pre-conditions
+- Must have MySQL and Java Enterprise to run
+- Must install Apache Tomcat server to run ([Tomcat download link](https://tomcat.apache.org/download-90.cgi))
 
+***
 Steps to run application
 
 1. Clone this repo
