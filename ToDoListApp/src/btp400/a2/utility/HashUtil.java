@@ -6,6 +6,12 @@ import java.security.SecureRandom;
 import java.util.Base64;
 import java.util.Random;
  
+/**
+ * 
+ * @author Jessica Krishtul
+ *
+ */
+
 public class HashUtil {
  
     // This hashes a string using SHA-512.
