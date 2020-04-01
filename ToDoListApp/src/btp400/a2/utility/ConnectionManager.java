@@ -2,6 +2,12 @@ package btp400.a2.utility;
 
 import java.sql.*;
 
+/**
+ * 
+ * @author Jessica Krishtul
+ *
+ */
+
 public class ConnectionManager {
 
    static Connection con;
