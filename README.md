@@ -3,7 +3,8 @@
 - Must install Apache Tomcat server to run ([Tomcat download link](https://tomcat.apache.org/download-90.cgi))
 
 ***
-Steps to run application
+
+## Steps to run application
 
 1. Clone this repo
 
