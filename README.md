@@ -1,8 +1,7 @@
 ## Pre-conditions
-- Must have MySQL and Java Enterprise to run
-- Must install Apache Tomcat server to run ([Tomcat download link](https://tomcat.apache.org/download-90.cgi))
+1. Must have MySQL and Java Enterprise to run
+2. Must install Apache Tomcat server to run ([Tomcat download link](https://tomcat.apache.org/download-90.cgi))
 
-***
 
 ## Steps to run application
 
