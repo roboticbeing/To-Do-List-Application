@@ -15,6 +15,7 @@ import btp400.a2.dao.UserDao;
 import btp400.a2.models.User;
 /**
  * Servlet implementation class LoginServlet
+ * @author Jessica Krishtul
  */
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
